@@ -24,9 +24,9 @@
                         <th>نقش های مرتبط</th>
                         <th>گزینه ها</th>
                     </tr>
-                    @foreach($permissions as $count=>$permission)
+                    @foreach($permissions as $count => $permission)
                         <tr class="text-center">
-                            <td>{{$count+1}}</td>
+                            <td>{{ ($permissions->currentpage()-1) * $permissions->perpage() + $count + 1 }}</td>
                             <td>{{$permission->permissionName}}</td>
                             <td>{{$permission->roles->pluck('roleName')->implode(' , ')}}</td>
                             <td>

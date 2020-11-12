@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
             $table->string('creator');
             $table->string('articleTitle');
             $table->string('articleDescription');
+            $table->enum('status', ['ACTIVE', 'FAILED', 'PENDING'])->default('ACTIVE');
             $table->timestamps();
         });
     }

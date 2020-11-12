@@ -25,9 +25,9 @@
                         <th>تاریخ ثبت</th>
                         <th>گزینه ها</th>
                     </tr>
-                    @foreach($roles as $count=>$role)
+                    @foreach($roles as $count => $role)
                         <tr class="text-center">
-                            <td>{{$count+1}}</td>
+                            <td>{{ ($roles->currentPage() -1) * $roles->perpage() + $count +1 }}</td>
                             <td>{{$role->roleName}}</td>
                             <td>{{$role->roleCreator}}</td>
                             <td>{{$role->created_at}}</td>

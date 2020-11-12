@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        /*User::create([
             'user_id' => 1,
             'sex' => 1,
             'type' => 0,
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             'mobile' => '09392141724',
             'password' => Hash::make('12345678'),
             'api_token' => Str::random(80),
-        ]);
+        ]);*/
         factory(User::class, 10)->create();
     }
 }

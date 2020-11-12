@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -50,6 +51,28 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        if ($this->isHttpException($exception)) {
+            if ($exception->getStatusCode() == 404) {
+                return response()->view('errors.404', [], 404);
+            }
+        }
+//        if ($exception instanceof ModelNotFoundException/* && $request->wantsJson()*/)
+//            return response()->json([
+//                'state' => false,
+//                'message' => 'not found!',
+//                'data' => null,
+//            ], 404);
+//        if (!($exception instanceof \Illuminate\Validation\ValidationException))
+//            if (!$this->isHttpException($exception) and !config('app.debug'))
+//            {
+//                if ($exception->getMessage() != "Unauthenticated.")
+//                    //$exception = new \Symfony\Component\HttpKernel\Exception\HttpException(500);
+//                    return response()->json([
+//                        'state' => false,
+//                        'message' => 'server error',
+//                        'data' => null
+//                    ], 500);
+//            }
         return parent::render($request, $exception);
     }
 }

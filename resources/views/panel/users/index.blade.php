@@ -22,15 +22,25 @@
                         <th>ردیف</th>
                         <th>نام کاربری</th>
                         <th>نقش</th>
+                        <th>جنسیت</th>
                         <th>تصویر</th>
                         <th>تاریخ ثبت</th>
                         <th>گزینه ها</th>
                     </tr>
-                    @foreach($users as $count=>$user)
+                    @foreach($users as $count => $user)
                         <tr class="text-center">
-                            <td>{{$count+1}}</td>
+                            <td>{{ ($users->currentPage() -1) * $users->perpage() + $count+1 }}</td>
                             <td>{{$user->username}}</td>
-                            <td>{{$user->type}}</td>
+                            @if($user->type == 0)
+                            <td> Admin </td>
+                            @elseif($user->type == 1)
+                            <td> User </td>
+                            @endif
+                            @if($user->sex == 0)
+                                <td> Woman </td>
+                            @elseif($user->sex == 1)
+                                <td> Man </td>
+                            @endif
 {{--                            <td><img src="/{{$usr->images->first()->path}}" alt="avatar" class="rounded" style="width:50px;height:50px;"></td>--}}
                             <td>{{$user->created_at}}</td>
                             <td>

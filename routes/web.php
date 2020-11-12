@@ -17,7 +17,7 @@ Route::group(['namespace' => 'Auth'], function () {
 //Route::group(['middleware' => 'isAdmin'], function () {
 //-------------------------Panel----------------------------------
 Route::group(['namespace' => 'Panel'], function () {
-    Route::group(['prefix' => 'panel'], function () {
+/*    Route::group(['prefix' => 'panel'], function () {*/
         //----------------------Dashboard-------------------------
         Route::group(['namespace' => 'Dashboard'], function () {
             Route::group(['prefix' => 'dashboard'], function () {
@@ -95,7 +95,7 @@ Route::group(['namespace' => 'Panel'], function () {
         //-------------------------Article-------------------------
         Route::group(['namespace' => 'Article'], function () {
             //-------------------------articles-categories-------------------------
-            Route::group(['prefix' => 'articles-categories'], function () {
+            /*Route::group(['prefix' => 'articles-categories'], function () {
                 Route::get('/', 'ArticlesCategoriesController@index')->name('articles-categories.index');
                 Route::get('/insert', 'ArticlesCategoriesController@insert')->name('articles-categories.insert');
                 Route::post('/store', 'ArticlesCategoriesController@store')->name('articles-categories.store');
@@ -103,22 +103,23 @@ Route::group(['namespace' => 'Panel'], function () {
                 Route::get('/edit', 'ArticlesCategoriesController@edit')->name('articles-categories.edit');
                 Route::post('/update', 'ArticlesCategoriesController@update')->name('articles-categories.update');
                 Route::post('/delete', 'ArticlesCategoriesController@delete')->name('articles-categories.delete');
-            });
+            });*/
             //-------------------------articles-------------------------
             Route::group(['prefix' => 'articles'], function () {
                 Route::get('/', 'ArticleController@index')->name('articles.index');
                 Route::get('/insert', 'ArticleController@insert')->name('articles.insert');
                 Route::post('/store', 'ArticleController@store')->name('articles.store');
                 Route::get('/show', 'ArticleController@show')->name('articles.show');
-                Route::get('/edit', 'ArticleController@edit')->name('articles.edit');
-                Route::post('/update', 'ArticleController@update')->name('articles.update');
-                Route::post('/delete', 'ArticleController@delete')->name('articles.delete');
+                Route::get('/edit/{id}', 'ArticleController@edit')->name('articles.edit');
+                Route::post('/update/{id}', 'ArticleController@update')->name('articles.update');
+                Route::post('/delete/{id}', 'ArticleController@delete')->name('articles.delete');
+                Route::post('/archive/{id}', 'ArticleController@archive')->name('articles.archive');
             });
         });
         //-------------------------Product-------------------------
         Route::group(['namespace' => 'Product'], function () {
             //-------------------------products-categories-------------------------
-            Route::group(['prefix' => 'products-categories'], function () {
+            /*Route::group(['prefix' => 'products-categories'], function () {
                 Route::get('/', 'ProductsCategoriesController@index')->name('products-categories.index');
                 Route::get('/insert', 'ProductsCategoriesController@insert')->name('products-categories.insert');
                 Route::post('/store', 'ProductsCategoriesController@store')->name('products-categories.store');
@@ -127,7 +128,7 @@ Route::group(['namespace' => 'Panel'], function () {
                 Route::post('/update/{id}', 'ProductsCategoriesController@update')->name('products-categories.update');
                 Route::post('/delete/{id}', 'ProductsCategoriesController@delete')->name('products-categories.delete');
                 Route::post('/archive/{id}', 'ProductsCategoriesController@archive')->name('products-categories.archive');
-            });
+            });*/
             //-------------------------articles-------------------------
             Route::group(['prefix' => 'products'], function () {
                 Route::get('/', 'ProductController@index')->name('products.index');
@@ -201,7 +202,7 @@ Route::group(['namespace' => 'Panel'], function () {
         });
         //---------------------------------------------------------
     });
-});
+/*});*/
 //});
 //------------------------Front-------------------------
 Route::group(['prefix' => '/'], function () {
